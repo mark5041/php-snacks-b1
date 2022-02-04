@@ -19,11 +19,16 @@
 
 
         <div class="my-container">
-
-
             <div class="row">
                 
-
+                <div v-for="(element, index) in cards" :key="index" class="card">
+                    <img :src="element.foto" :alt="element.title">
+                    <h1>{{element.Modello}}</h1>
+                    <span class="mt-2">{{element.Cambio}}</span>
+                    <span class="pb-3">{{element.Persone}}</span>
+                    <span class="pb-3">{{element.Porte}}</span>
+                    <span class="pb-3">{{element.Bagagli}}</span>
+                </div>
 
             </div>
         </div>
