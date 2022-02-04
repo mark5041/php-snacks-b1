@@ -18,16 +18,16 @@
     <main id="app">
 
 
-        <div class="my-container">
+        <div class="container">
             <div class="row">
                 
-                <div v-for="(element, index) in cards" :key="index" class="card">
-                    <img :src="element.foto" :alt="element.title">
+                <div v-for="(element, index) in cards" :key="index" class="card align-items-center">
+                    <img :src="element.foto" :alt="element.Modello" class="img-fluid">
                     <h1>{{element.Modello}}</h1>
-                    <span class="mt-2">{{element.Cambio}}</span>
-                    <span class="pb-3">{{element.Persone}}</span>
-                    <span class="pb-3">{{element.Porte}}</span>
-                    <span class="pb-3">{{element.Bagagli}}</span>
+                    <span class="mt-2">Cambio: {{element.Cambio}}</span>
+                    <span class="pb-3">max Persone: {{element.Persone}}</span>
+                    <span class="pb-3">Porte: {{element.Porte}}</span>
+                    <span class="pb-3">max Bagagli: {{element.Bagagli}}</span>
                 </div>
 
             </div>

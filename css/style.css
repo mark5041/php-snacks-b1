@@ -1,0 +1,12 @@
+main {
+    padding: 50px 0;
+}
+
+.row {
+    gap: 1em;
+}
+
+.card {
+    width: 300px;
+    text-transform: capitalize;
+}
