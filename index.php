@@ -20,8 +20,21 @@
 
         <div class="container">
             <div class="row">
+
+                <div class="select-section">
+                    <select  v-model="selected.cambio" @change="getCard()" name="" id="">
+                        <option value="all" selected>all</option>
+                        <option v-for="(element, index) in cambio" :key="index" :value="element">{{element}}</option>
+                    </select>
+
+                    <select  v-model="selected.size" @change="getCard()" name="" id="">
+                        <option value="all" selected>all</option>
+                        <option v-for="(element, index) in size" :key="index" :value="element">{{element}}</option>
+                    </select>
+                </div>
+
                 
-                <div v-for="(element, index) in cards" :key="index" class="card align-items-center">
+                <div v-for="(element, index) in cards" :key="element.codice_auto" class="card align-items-center">
                     <img :src="element.foto" :alt="element.Modello" class="img-fluid">
                     <h1>{{element.Modello}}</h1>
                     <span class="mt-2">Cambio: {{element.Cambio}}</span>

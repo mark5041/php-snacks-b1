@@ -2,15 +2,37 @@ const app = new Vue({
     el: '#app',
     data: {
         cards: [],
-        selected: 'all',
+        cambio: [],
+        size: [],
+        selected: {
+            cambio: 'all',
+            size: 'all'
+        },
     },
     created() {
         this.getCard();
+        setTimeout(() => {
+            this.cards.forEach(element => {
+                if (!this.cambio.includes(element.Cambio)) {  
+                    this.cambio.push(element.Cambio);  
+                }
+
+                if (!this.size.includes(element.Tipo)) {  
+                    this.size.push(element.Tipo);  
+                }
+            });
+            
+        }, 500);
     },
     methods: {
         getCard() 
         {
-            axios.get(`http://localhost/php-snacks-b1/server/controller.php?query=${this.selected}`)
+            const params = {
+                cambio: this.selected.cambio,
+                size: this.selected.size,
+            };
+
+            axios.get(`http://localhost/php-snacks-b1/server/controller.php`, { params })
             .then((result) => {
                 this.cards = result.data.response;
                 })
@@ -18,12 +40,5 @@ const app = new Vue({
                     console.log(err);
             });
        }
-    },
-    watch: {
-        cards:
-            function()
-            {
-                console.log(this.cards);
-            }
     }
 });
