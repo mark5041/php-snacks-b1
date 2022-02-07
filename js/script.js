@@ -2,11 +2,14 @@ const app = new Vue({
     el: '#app',
     data: {
         cards: [],
+        fitredCards: null,
         cambio: [],
         size: [],
+        bagagli: [],
         selected: {
             cambio: 'all',
-            size: 'all'
+            size: 'all',
+            bagagli: 'all',
         },
     },
     created() {
@@ -20,9 +23,14 @@ const app = new Vue({
                 if (!this.size.includes(element.Tipo)) {  
                     this.size.push(element.Tipo);  
                 }
+
+                if (!this.bagagli.includes(element.Bagagli)) {  
+                    this.bagagli.push(element.Bagagli);  
+                }
+
             });
             
-        }, 500);
+        }, 100);
     },
     methods: {
         getCard() 
@@ -39,6 +47,17 @@ const app = new Vue({
             .catch((err) => {
                     console.log(err);
             });
+
+            if(this.selected.bagagli != 'all')
+            {
+                this.fitredCards = this.cards.filter((card) => {
+                    return card.Bagagli >= parseInt(this.selected.bagagli);
+                });
+            }
+            else
+            {
+                this.fitredCards = null;
+            }
        }
-    }
+    },
 });

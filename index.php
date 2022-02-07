@@ -31,17 +31,30 @@
                         <option value="all" selected>all</option>
                         <option v-for="(element, index) in size" :key="index" :value="element">{{element}}</option>
                     </select>
+
+                    <select  v-model="selected.bagagli" @change="getCard()" name="" id="">
+                        <option value="all" selected>all</option>
+                        <option v-for="(element, index) in bagagli" :key="index" :value="element">{{element}}</option>
+                    </select>
                 </div>
 
-                
-                <div v-for="(element, index) in cards" :key="element.codice_auto" class="card align-items-center">
-                    <img :src="element.foto" :alt="element.Modello" class="img-fluid">
-                    <h1>{{element.Modello}}</h1>
-                    <span class="mt-2">Cambio: {{element.Cambio}}</span>
-                    <span class="pb-3">max Persone: {{element.Persone}}</span>
-                    <span class="pb-3">Porte: {{element.Porte}}</span>
-                    <span class="pb-3">max Bagagli: {{element.Bagagli}}</span>
-                </div>
+                    <div v-show="fitredCards == null" v-for="(element, index) in cards" :key="element.codice_auto" class="card align-items-center">
+                        <img :src="element.foto" :alt="element.Modello" class="img-fluid">
+                        <h1>{{element.Modello}}</h1>
+                        <span class="mt-2">Cambio: {{element.Cambio}}</span>
+                        <span class="pb-3">max Persone: {{element.Persone}}</span>
+                        <span class="pb-3">Porte: {{element.Porte}}</span>
+                        <span class="pb-3">max Bagagli: {{element.Bagagli}}</span>
+                    </div>
+
+                    <div v-show="fitredCards != null" v-for="(element, index) in fitredCards" :key="element.codice_auto" class="card align-items-center">
+                        <img :src="element.foto" :alt="element.Modello" class="img-fluid">
+                        <h1>{{element.Modello}}</h1>
+                        <span class="mt-2">Cambio: {{element.Cambio}}</span>
+                        <span class="pb-3">max Persone: {{element.Persone}}</span>
+                        <span class="pb-3">Porte: {{element.Porte}}</span>
+                        <span class="pb-3">max Bagagli: {{element.Bagagli}}</span>
+                    </div>
 
             </div>
         </div>
